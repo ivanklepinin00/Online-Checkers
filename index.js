@@ -3,12 +3,13 @@ const movePiece = require('./movePiece');
 const config = require ('config')
 const mongoose = require('mongoose')
 const app = express()
+const socketio = require('socket.io');
 const path = require('path')
 const http = require('http').createServer(app);
 // const io = require('socket.io')(http, {
 //     transports: ['websocket'],
 //   });
-const io = socketIO(server);
+const io = socketio(server);
 
 app.use(express.json({extended: true}))
 
