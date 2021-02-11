@@ -5,9 +5,24 @@ const mongoose = require('mongoose')
 const app = express()
 const path = require('path')
 const http = require('http').createServer(app);
+const cors = require('cors') 
 const io = require('socket.io')(http, {
     transports: ['websocket'],
   });
+
+const whitelist = ['http://localhost:3000', 'http://localhost:8080', 'https://agile-wildwood-08195.herokuapp.com']
+const corsOptions = {
+origin: function (origin, callback) {
+    console.log("** Origin of request " + origin)
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+    console.log("Origin acceptable")
+    callback(null, true)
+    } else {
+    console.log("Origin rejected")
+    callback(new Error('Not allowed by CORS'))
+    }
+}
+}
 
 app.use(express.json({extended: true}))
 
