@@ -5,9 +5,10 @@ const mongoose = require('mongoose')
 const app = express()
 const path = require('path')
 const http = require('http').createServer(app);
-const io = require('socket.io')(http, {
-    transports: ['websocket'],
-  });
+// const io = require('socket.io')(http, {
+//     transports: ['websocket'],
+//   });
+const io = socketIO(server);
 
 app.use(express.json({extended: true}))
 
