@@ -11,7 +11,6 @@ const io = require('socket.io')(http, {
 
 app.use(express.json({extended: true}))
 
-
 app.use('/api/auth', require('./routes/auth.routes'))
 
 if (process.env.NODE_ENV === 'production') {
