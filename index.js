@@ -9,41 +9,18 @@ const io = require('socket.io')(http, {
     transports: ['websocket'],
   });
 
-app.use(express.json({extended: false}))
+app.use(express.json({extended: true}))
 
 app.use('/api/auth', require('./routes/auth.routes'))
 
-// if (process.env.NODE_ENV === 'production') {
-//     app.use('/', express.static(path.join(__dirname, 'client', 'build')));
-
-//     app.get('*', (req, res)=> {
-//         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-//     })
-// }
-const whitelist = ['http://localhost:3000', 'http://localhost:8080', 'https://shrouded-journey-38552.herokuapp.com']
-const corsOptions = {
-  origin: function (origin, callback) {
-    console.log("** Origin of request " + origin)
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      console.log("Origin acceptable")
-      callback(null, true)
-    } else {
-      console.log("Origin rejected")
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-app.use(cors(corsOptions))
-
 if (process.env.NODE_ENV === 'production') {
     // Serve any static files
-    app.use(express.static(path.join(__dirname, 'client/build')));
-  // Handle React routing, return all requests to React app
-    app.get('*', function(req, res) {
-      res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    app.use('/', express.static(path.join(__dirname, 'client', 'build')));
+    // Handle React routing, return all requests to React app
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
     });
-  }
-
+}
 const PORT = process.env.PORT || 4000
 let games = [];
 let nextGameId = 0;
