@@ -1,0 +1,81 @@
+.board .row {
+  text-align: center;
+  justify-content: center;
+}
+
+.board .col {
+  text-align: center;
+  justify-content: center;
+}
+.board {
+  margin: auto;  
+}
+
+.board .cell {
+  width: 65px;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board .cell.gray {
+  background-color: #8d6b45;
+}
+.board .cell.white {
+  background-color: #eacda5;
+}
+
+.board .cell .piece {
+  border-radius: 50%;
+  width: 65%;
+  height: 65%;
+  display: inline-block;
+}
+
+.board .cell .piece.selected {
+  border: 3px solid green;
+}
+
+.board .cell .piece.clickable {
+  cursor: pointer;
+}
+
+.board .cell .piece.black {
+  background-color: black;
+}
+
+.board .cell .piece.white {
+  background-color: white;
+}
+
+.board .cell .piece.whiteQueen {
+  background-image: url(./Images/white-crown.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+    padding: 12px;
+    border-radius: 50px;
+    background-color: inherit;
+}
+
+.board .cell .piece.blackQueen {
+  background-image: url(./Images/black-crown.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+    padding: 12px;
+    border-radius: 50px;
+    background-color: inherit;
+}
+
+.flex {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+}
