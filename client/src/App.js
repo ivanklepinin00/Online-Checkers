@@ -19,6 +19,8 @@ import {AuthPage} from './pages/AuthPage'
 
 const history = createHistory(); 
 
+const ENDPOINT = 'https://agile-wildwood-08195.herokuapp.com/';
+
 function App() {
   const {token, login, logout, userId} = useAuth()
   const isAuthenticated = !!token;
@@ -70,7 +72,7 @@ function App() {
   };
 
   useEffect(() => {
-    const newSocket = io('http://localhost:4000', {
+    const newSocket = io(ENDPOINT, {
       transports: ['websocket'],
     });
     newSocket.on('disconnect', () => {
