@@ -72,9 +72,7 @@ function App() {
   };
 
   useEffect(() => {
-    const newSocket = io(ENDPOINT, {
-      transports: ['websocket'],
-    });
+    const newSocket = io(ENDPOINT);
     newSocket.on('disconnect', () => {
       setGameId(null);
       setColor('');
