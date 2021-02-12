@@ -6,17 +6,12 @@ const app = express()
 const socketio = require('socket.io');
 const path = require('path')
 const http = require('http');
-// const http = require('http').createServer(app);
-// const io = require('socket.io')(http, {
-//     transports: ['websocket'],
-//   });
 app.use(express.json({extended: true}))
 
 app.use('/api/auth', require('./routes/auth.routes'))
-
-
 const server = http.createServer(app);
 const io = socketio(server);
+
 if (process.env.NODE_ENV === 'production') {
     app.use('/', express.static(path.join(__dirname, 'client', 'build')));
     app.get('*', (req, res) => {

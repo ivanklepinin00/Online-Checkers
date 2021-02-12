@@ -34,43 +34,43 @@ export const AuthPage = () => {
 
 
   return (
-    <div id="main-container" class="container-fluid">
-    <div class="row">
-        <div id="auth-form" class="card border-primary">
-        <h5 class="card-header bg-primary text-white">Online Checkers</h5>
-        <div class="card-body">
-            <form class="panel-body">
-            <div class="input-group">
+    <div id="main-container" className="container-fluid">
+    <div className="row">
+        <div id="auth-form" className="card border-primary">
+        <h5 className="card-header bg-primary text-white">Online Checkers</h5>
+        <div className="card-body">
+            <form className="panel-body">
+            <div className="input-group">
                 <input 
                     type="text" 
                     id="login" 
                     name="email"
-                    class="form-control" 
+                    className="form-control" 
                     placeholder="Email"
                     onChange={changeHandler}
                 />
             </div>
-            <div class="input-group">
+            <div className="input-group">
                 <input 
                     type="password" 
                     id="password"
                     name="password" 
-                    class="form-control" 
+                    className="form-control" 
                     placeholder="Password"
                     onChange={changeHandler}
                 />
             </div>
-            <div class="buttons-group">
+            <div className="buttons-group">
                 <button 
                     type="button" 
-                    class="btn btn-primary"
+                    className="btn btn-primary"
                     disabled={loading}
                     onClick={loginHandler}
                 >
                     Login</button>
                 <button 
                     type="button"
-                    class="btn btn-primary"
+                    className="btn btn-primary"
                     onClick={registerHandler}
                     disabled={loading}
                 >Register</button>
